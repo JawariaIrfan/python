@@ -1,0 +1,44 @@
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 
+            'j', 'k', 'l', 'm', 'n', 'o', 
+            'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").casefold()
+text = input("Type your message:\n").lower()
+shift = int(input("Type the shift number:\n"))
+empty_list = []
+def encrypt(a, b):
+    for letter in a:
+        x = alphabet.index(letter)
+        if (x + b) > len(alphabet):
+            f = (x -b )
+        else:
+            f = (x + b)
+        #print(f)
+        q = alphabet[f]
+        #print(q)
+        empty_list.extend(q)   
+    #print(empty_list)
+    j ="".join(empty_list)    
+    print(f"Your encoded message is {j}")   
+#encrypt(text, shift )
+
+def decrypt(a,b):
+    for letter in a:
+        x = alphabet.index(letter)
+        if (x - b) > len(alphabet):
+            f = (x  +b )
+        else:
+            f = (x - b)
+        #print(f)
+        q = alphabet[f]
+        #print(q)
+        empty_list.extend(q)   
+    #print(empty_list)
+    j ="".join(empty_list)    
+    print(f"Your decoded message is {j}")
+
+if direction == "encode":
+    encrypt(text, shift)
+elif direction == "decode":
+    decrypt(text, shift)
+
+
